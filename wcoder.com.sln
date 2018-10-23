@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2003
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wcoder.Blog.Dashboard.Server", "src\Dashboard\Wcoder.Blog.Dashboard.Server\Wcoder.Blog.Dashboard.Server.csproj", "{5AE86DA3-BFBF-4235-B55C-0145200C3D11}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wcoder.Blog.Dashboard.Server", "src\Dashboard\Wcoder.Blog.Dashboard.Server\Wcoder.Blog.Dashboard.Server.csproj", "{5AE86DA3-BFBF-4235-B55C-0145200C3D11}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wcoder.Blog.Dashboard.App", "src\Dashboard\Wcoder.Blog.Dashboard.App\Wcoder.Blog.Dashboard.App.csproj", "{90D2197D-D45E-4C3D-BA9D-1D0E8CEE3FFE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wcoder.Blog.Dashboard.App", "src\Dashboard\Wcoder.Blog.Dashboard.App\Wcoder.Blog.Dashboard.App.csproj", "{90D2197D-D45E-4C3D-BA9D-1D0E8CEE3FFE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dashboard", "Dashboard", "{9A49B506-1100-4D19-AFEA-E99ED52C8013}"
 EndProject
@@ -14,6 +14,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wcoder.Blog.Portal.App", "src\Portal\Wcoder.Blog.Portal.App\Wcoder.Blog.Portal.App.csproj", "{4EC5EAFD-1CDC-40C0-A279-54426D9ACF5C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wcoder.Blog.Portal.Server", "src\Portal\Wcoder.Blog.Portal.Server\Wcoder.Blog.Portal.Server.csproj", "{E9EBB385-99A2-45CE-A874-77D55EE562C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wcoder.Blog.Protocol", "src\Wcoder.Blog.Protocol\Wcoder.Blog.Protocol.csproj", "{A5351BD6-FA53-48E9-AA28-CCA8953F50A9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +39,10 @@ Global
 		{E9EBB385-99A2-45CE-A874-77D55EE562C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E9EBB385-99A2-45CE-A874-77D55EE562C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E9EBB385-99A2-45CE-A874-77D55EE562C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5351BD6-FA53-48E9-AA28-CCA8953F50A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5351BD6-FA53-48E9-AA28-CCA8953F50A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5351BD6-FA53-48E9-AA28-CCA8953F50A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5351BD6-FA53-48E9-AA28-CCA8953F50A9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
