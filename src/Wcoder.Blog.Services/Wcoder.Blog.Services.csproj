@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Wcoder.Blog.Protocol\Wcoder.Blog.Protocol.csproj" />
+    <ProjectReference Include="..\Wcoder.Blog.Infrastructure\Wcoder.Blog.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

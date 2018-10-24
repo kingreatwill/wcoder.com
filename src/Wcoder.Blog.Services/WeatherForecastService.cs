@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Wcoder.Blog.Infrastructure;
 using Wcoder.Blog.Protocol.Interfaces;
 using Wcoder.Blog.Protocol.Models;
 
@@ -8,6 +9,13 @@ namespace Wcoder.Blog.Services
 {
     public class WeatherForecastService : IWeatherForecastService
     {
+        private readonly BlogContext blogContext;
+
+        public WeatherForecastService(BlogContext blogContext)
+        {
+            this.blogContext = blogContext;
+        }
+
         private static string[] Summaries = new[]
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
