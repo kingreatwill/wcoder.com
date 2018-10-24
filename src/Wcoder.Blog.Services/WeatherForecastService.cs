@@ -1,10 +1,12 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Wcoder.Blog.Protocol.Interfaces;
+using Wcoder.Blog.Protocol.Models;
 
-namespace Wcoder.Blog.Dashboard.App.Services
+namespace Wcoder.Blog.Services
 {
-    public class WeatherForecastService
+    public class WeatherForecastService : IWeatherForecastService
     {
         private static string[] Summaries = new[]
         {

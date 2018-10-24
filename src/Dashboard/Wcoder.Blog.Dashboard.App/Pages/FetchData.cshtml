@@ -1,6 +1,5 @@
-﻿@using Wcoder.Blog.Dashboard.App.Services
-@page "/fetchdata"
-@inject WeatherForecastService ForecastService
+﻿@page "/fetchdata"
+@inject IWeatherForecastService ForecastService
 
 <h1>Weather forecast</h1>
 
@@ -36,10 +35,10 @@ else
 }
 
 @functions {
-    WeatherForecast[] forecasts;
+WeatherForecast[] forecasts;
 
-    protected override async Task OnInitAsync()
-    {
-        forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
-    }
+protected override async Task OnInitAsync()
+{
+    forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
+}
 }

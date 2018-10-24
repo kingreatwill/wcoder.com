@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.Extensions.DependencyInjection;
 using System.Linq;
 using System.Net.Mime;
+using Wcoder.Blog.Protocol.Interfaces;
+using Wcoder.Blog.Services;
 
 namespace Wcoder.Blog.Dashboard.Server
 {
@@ -14,6 +16,8 @@ namespace Wcoder.Blog.Dashboard.Server
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<IWeatherForecastService, WeatherForecastService>();
+
             // Adds the Server-Side Blazor services, and those registered by the app project's startup.
             services.AddServerSideBlazor<App.Startup>();
 

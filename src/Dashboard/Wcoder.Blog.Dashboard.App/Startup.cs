@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Blazor.Builder;
 using Microsoft.Extensions.DependencyInjection;
-using Wcoder.Blog.Dashboard.App.Services;
 
 namespace Wcoder.Blog.Dashboard.App
 {
@@ -10,7 +9,7 @@ namespace Wcoder.Blog.Dashboard.App
         {
             // Since Blazor is running on the server, we can use an application service
             // to read the forecast data.
-            services.AddSingleton<WeatherForecastService>();
+            //services.AddSingleton<WeatherForecastService>();
         }
 
         public void Configure(IBlazorApplicationBuilder app)

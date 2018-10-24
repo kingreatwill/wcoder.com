@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wcoder.Blog.Portal.App", "s
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wcoder.Blog.Portal.Server", "src\Portal\Wcoder.Blog.Portal.Server\Wcoder.Blog.Portal.Server.csproj", "{E9EBB385-99A2-45CE-A874-77D55EE562C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wcoder.Blog.Protocol", "src\Wcoder.Blog.Protocol\Wcoder.Blog.Protocol.csproj", "{A5351BD6-FA53-48E9-AA28-CCA8953F50A9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wcoder.Blog.Protocol", "src\Wcoder.Blog.Protocol\Wcoder.Blog.Protocol.csproj", "{A5351BD6-FA53-48E9-AA28-CCA8953F50A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wcoder.Blog.Services", "src\Wcoder.Blog.Services\Wcoder.Blog.Services.csproj", "{EBCFF26C-6434-431C-A673-66FACF70462D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +45,10 @@ Global
 		{A5351BD6-FA53-48E9-AA28-CCA8953F50A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A5351BD6-FA53-48E9-AA28-CCA8953F50A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A5351BD6-FA53-48E9-AA28-CCA8953F50A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBCFF26C-6434-431C-A673-66FACF70462D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBCFF26C-6434-431C-A673-66FACF70462D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBCFF26C-6434-431C-A673-66FACF70462D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBCFF26C-6434-431C-A673-66FACF70462D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
