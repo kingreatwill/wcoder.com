@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Wcoder.Blog.InjectionConfig
+namespace Wcoder.Blog.Application
 {
     public static class ManagedInjection
     {
