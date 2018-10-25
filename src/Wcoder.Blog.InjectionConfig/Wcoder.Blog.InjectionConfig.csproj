@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Wcoder.Blog.Infrastructure\Wcoder.Blog.Infrastructure.csproj" />
+    <ProjectReference Include="..\Wcoder.Blog.Services\Wcoder.Blog.Services.csproj" />
+  </ItemGroup>
+
+</Project>

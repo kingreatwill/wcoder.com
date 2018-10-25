@@ -17,9 +17,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wcoder.Blog.Portal.Server",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wcoder.Blog.Protocol", "src\Wcoder.Blog.Protocol\Wcoder.Blog.Protocol.csproj", "{A5351BD6-FA53-48E9-AA28-CCA8953F50A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wcoder.Blog.Services", "src\Wcoder.Blog.Services\Wcoder.Blog.Services.csproj", "{EBCFF26C-6434-431C-A673-66FACF70462D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wcoder.Blog.Services", "src\Wcoder.Blog.Services\Wcoder.Blog.Services.csproj", "{EBCFF26C-6434-431C-A673-66FACF70462D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wcoder.Blog.Infrastructure", "src\Wcoder.Blog.Infrastructure\Wcoder.Blog.Infrastructure.csproj", "{C2DB2601-EAA6-4065-AE3B-1C523B67FAB6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wcoder.Blog.Infrastructure", "src\Wcoder.Blog.Infrastructure\Wcoder.Blog.Infrastructure.csproj", "{C2DB2601-EAA6-4065-AE3B-1C523B67FAB6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wcoder.Blog.InjectionConfig", "src\Wcoder.Blog.InjectionConfig\Wcoder.Blog.InjectionConfig.csproj", "{7FFDFE23-F18B-4FC5-8C91-6847752E8E09}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +57,10 @@ Global
 		{C2DB2601-EAA6-4065-AE3B-1C523B67FAB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2DB2601-EAA6-4065-AE3B-1C523B67FAB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2DB2601-EAA6-4065-AE3B-1C523B67FAB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FFDFE23-F18B-4FC5-8C91-6847752E8E09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FFDFE23-F18B-4FC5-8C91-6847752E8E09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FFDFE23-F18B-4FC5-8C91-6847752E8E09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FFDFE23-F18B-4FC5-8C91-6847752E8E09}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
