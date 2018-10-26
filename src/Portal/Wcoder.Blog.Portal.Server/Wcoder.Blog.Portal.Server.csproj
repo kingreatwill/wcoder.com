@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Wcoder.Blog.Services\Wcoder.Blog.Services.csproj" />
+    <ProjectReference Include="..\..\Wcoder.Blog.Application\Wcoder.Blog.Application.csproj" />
     <ProjectReference Include="..\Wcoder.Blog.Portal.App\Wcoder.Blog.Portal.App.csproj" />
   </ItemGroup>
 

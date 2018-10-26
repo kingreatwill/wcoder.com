@@ -13,7 +13,7 @@ namespace Wcode.Blog.Portal.App.Pages
     {
         private IWeatherForecastService weatherForecastService;
 
-        public IndexModel(IWeatherForecastService weatherForecastService)
+        public IndexModel(IWeatherForecastService weatherForecastService, IWcoderBlogService sd)
         {
             this.weatherForecastService = weatherForecastService;
         }

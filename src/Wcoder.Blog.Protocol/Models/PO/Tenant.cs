@@ -7,11 +7,11 @@ using System.Text;
 namespace Wcoder.Blog.Protocol.Models
 {
     [Table("Tenant")]
-    public class Tenant : AuditEntity
+    public class Tenant : IAuditEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public override long Id { get; set; }
+        public long Id { get; set; }
 
         [Required]
         [MaxLength(50)]
@@ -22,5 +22,19 @@ namespace Wcoder.Blog.Protocol.Models
 
         [MaxLength(200)]
         public string LogoUri { get; set; }
+
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public DateTime Created { get; set; }
+
+        public long CreatedBy { get; set; }
+
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        public DateTime Updated { get; set; }
+
+        public long UpdatedBy { get; set; }
+
+        public bool Deleted { get; set; }
+
+        public long DeletedBy { get; set; }
     }
 }

@@ -19,6 +19,7 @@ namespace Wcoder.Blog.Infrastructure
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            // builder.HasDefaultSchema("wcoder");
             builder.ApplyConfiguration(new TenantEntityTypeConfiguration());
         }
     }

@@ -6,11 +6,11 @@ using System.Text;
 
 namespace Wcoder.Blog.Protocol.Models
 {
-    public class Catalog : TenantEntity
+    public class Catalog : ITenantEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public override long Id { get; set; }
+        public long Id { get; set; }
 
         [Required]
         [MaxLength(50)]
@@ -24,5 +24,21 @@ namespace Wcoder.Blog.Protocol.Models
 
         [MaxLength(200)]
         public string PictureUri { get; set; }
+
+        public long TenantId { get; set; }
+
+        public long CreatedBy { get; set; }
+
+        public long UpdatedBy { get; set; }
+
+        public long DeletedBy { get; set; }
+
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public DateTime Created { get; set; }
+
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        public DateTime Updated { get; set; }
+
+        public bool Deleted { get; set; }
     }
 }

@@ -1,19 +1,33 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration;
+using Wcoder.Blog.Infrastructure;
+using Wcoder.Blog.Protocol.Interfaces;
+using Wcoder.Blog.Services;
 
-namespace Wcoder.Blog.Application
+namespace Microsoft.Extensions.DependencyInjection
 {
     public static class ManagedInjection
     {
-        public static void AddWcoderBlogServices(this IServiceCollection services)
+        /// <summary>
+        /// WcoderBlog
+        /// </summary>
+        /// <param name="services">IServiceCollection</param>
+        /// <param name="configuration">IConfiguration</param>
+        public static void AddWcoderBlogServices(this IServiceCollection services, IConfiguration configuration)
         {
-            var sqlConnectionString = Configuration.GetConnectionString("DataAccessMsSqlServerProvider");
+            // DB
+            var sqlConnectionString = configuration.GetConnectionString("BlogConnection");
 
-            services.AddDbContext<DomainModelMsSqlServerContext>(options =>
-                options.UseSqlServer(
-                    sqlConnectionString,
-                    b => b.MigrationsAssembly("AspNetCoreMultipleProject")
-                )
-            );
+            services.AddDbContext<BlogContext>(options =>
+                options.UseSqlServer(sqlConnectionString, b => b.MigrationsAssembly("Wcoder.Blog.Portal.Server"))
+            ).AddUnitOfWork<BlogContext>();//.AddCustomRepository<Blog, CustomBlogRepository>()
+                                           //https://github.com/Arch/UnitOfWork
+            services.AddScoped(typeof(DbContext), typeof(BlogContext));
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            // Services
+            services.AddScoped<IWeatherForecastService, WeatherForecastService>();
+            services.AddScoped<IWcoderBlogService, WcoderBlogService>();
         }
     }
 }
