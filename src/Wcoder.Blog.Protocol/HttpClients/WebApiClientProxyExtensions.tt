@@ -1,0 +1,70 @@
+﻿<#@ template debug="true" hostSpecific="true" #>
+<#@ output extension=".cs" #>
+<#@ Assembly Name="System.Core.dll" #>
+<#@ Assembly Name="System.Xml.dll" #>
+<#@ Assembly Name="System.Xml.Linq.dll" #>
+<#@ Assembly Name="System.Windows.Forms.dll" #>
+<#@ Assembly Name="$(TargetDir)\$(TargetName).dll" #>
+<#@ import namespace="System.Reflection" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Xml.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="Wcoder.Blog.Protocol.Interfaces" #>
+<#@ output extension=".cs" #>
+<# 
+	var types = Assembly.GetAssembly(typeof(IWcoderBlogService)).GetTypes().Where(t =>t.IsClass && t.Name.EndsWith("Service")).ToArray();
+	var services = new List<TwoTypes>();
+	foreach (var t in types)
+	{
+        services.Add(new TwoTypes{
+			InterfaceType=t.GetInterfaces().FirstOrDefault(),
+			ClassType=t
+		});//t.GetInterfaces().FirstOrDefault()
+    }
+	string solutionsPath = Host.ResolveAssemblyReference(@"$(SolutionDir)"); 
+#>
+using Polly;
+using System;
+using Wcoder.Blog.Protocol.HttpClients;
+using Wcoder.Blog.Protocol.Interfaces;
+namespace Microsoft.Extensions.DependencyInjection
+{
+    public static class WebApiClientProxyExtensions
+    {
+        public static void AddBlazorHostClientWcoderBlogServices(this IServiceCollection services)
+        {
+            services.AddHttpClient("WcoderBlog", client =>
+            {
+                client.BaseAddress = new Uri("http://localhost:5003");
+                client.DefaultRequestHeaders.Add("Accept", "application/json");
+            }).AddTransientHttpErrorPolicy(builder => builder.WaitAndRetryAsync(new[]
+            {
+                TimeSpan.FromSeconds(1),
+                TimeSpan.FromSeconds(2),
+                TimeSpan.FromSeconds(3)
+            }));
+
+            // Services
+<#
+foreach (var service in services) {
+#>
+			services.AddScoped<<#= service.InterfaceType.Name#>, <#= service.ClassType.Name#>>();
+<#
+}
+#>
+        }
+    }
+}
+
+
+<#+ 
+public class TwoTypes
+    {
+		public Type InterfaceType {get;set;}
+		public Type ClassType {get;set;}
+	}
+#>

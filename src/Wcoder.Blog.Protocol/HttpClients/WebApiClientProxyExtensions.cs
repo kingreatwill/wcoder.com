@@ -2,16 +2,10 @@
 using System;
 using Wcoder.Blog.Protocol.HttpClients;
 using Wcoder.Blog.Protocol.Interfaces;
-
 namespace Microsoft.Extensions.DependencyInjection
 {
-    public static class HttpClientSerivcesInjection
+    public static class WebApiClientProxyExtensions
     {
-        /// <summary>
-        /// WcoderBlog
-        /// </summary>
-        /// <param name="services">IServiceCollection</param>
-        /// <param name="configuration">IConfiguration</param>
         public static void AddBlazorHostClientWcoderBlogServices(this IServiceCollection services)
         {
             services.AddHttpClient("WcoderBlog", client =>
@@ -26,8 +20,10 @@ namespace Microsoft.Extensions.DependencyInjection
             }));
 
             // Services
-            services.AddScoped<IWeatherForecastService, WeatherForecastHttpClientService>();
-            services.AddScoped<IWcoderBlogService, WcoderBlogHttpClientService>();
+			services.AddScoped<IWcoderBlogService, WcoderBlogHttpClientService>();
+			services.AddScoped<IWeatherForecastService, WeatherForecastHttpClientService>();
         }
     }
 }
+
+
