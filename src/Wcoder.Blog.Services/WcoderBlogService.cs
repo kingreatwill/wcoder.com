@@ -14,11 +14,6 @@ namespace Wcoder.Blog.Services
 
         public WcoderBlogService(BlogContext blogContext, IRepository<Tenant> repository, IUnitOfWork unitOfWork)
         {
-            var s = repository.GetPagedList();
-            var userRepo = unitOfWork.GetRepository<Tenant>();
-            var s2 = userRepo.GetPagedList();
-            //var postRepo = unitOfWork.GetRepository<Catalog>();
-            // this.blogContext = blogContext;
         }
     }
 }

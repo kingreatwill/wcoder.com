@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,10 +11,14 @@ namespace Wcoder.Blog.Services
     public class WeatherForecastService : IWeatherForecastService
     {
         private readonly BlogContext blogContext;
+        private readonly IRepository<Tenant> repository;
+        private readonly IUnitOfWork unitOfWork;
 
-        public WeatherForecastService(BlogContext blogContext)
+        public WeatherForecastService(BlogContext blogContext, IRepository<Tenant> repository, IUnitOfWork unitOfWork)
         {
             this.blogContext = blogContext;
+            this.repository = repository;
+            this.unitOfWork = unitOfWork;
         }
 
         private static string[] Summaries = new[]
@@ -28,7 +33,7 @@ namespace Wcoder.Blog.Services
             {
                 Date = startDate.AddDays(index),
                 TemperatureC = rng.Next(-20, 55),
-                Summary = Summaries[rng.Next(Summaries.Length)]
+                Summary = Summaries[rng.Next(Summaries.Length)] + " || " + repository.GetPagedList().Items.FirstOrDefault().Name
             }).ToArray());
         }
     }
