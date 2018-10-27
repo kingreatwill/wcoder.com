@@ -18,10 +18,13 @@ namespace Wcoder.Blog.Dashboard.Host
         }
 
         public static IWebHost BuildWebHost(string[] args) =>
-            WebHost.CreateDefaultBuilder(args).UseUrls("http://localhost:5003")
-                .UseConfiguration(new ConfigurationBuilder()
-                    .AddCommandLine(args)
-                    .Build())
+            WebHost.CreateDefaultBuilder(args)
+                 .ConfigureAppConfiguration((hostingContext, config) =>
+                 {
+                     config.SetBasePath(hostingContext.HostingEnvironment.ContentRootPath)
+                     .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+                 })
+                .UseUrls("http://localhost:5003")
                 .UseStartup<Startup>()
                 .Build();
     }

@@ -14,10 +14,10 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <param name="configuration">IConfiguration</param>
         public static void AddBlazorHostClientWcoderBlogServices(this IServiceCollection services)
         {
-            services.AddHttpClient("GitHub", client =>
+            services.AddHttpClient("WcoderBlog", client =>
             {
-                client.BaseAddress = new Uri("https://api.github.com/");
-                client.DefaultRequestHeaders.Add("Accept", "application/vnd.github.v3+json");
+                client.BaseAddress = new Uri("http://localhost:5003");
+                client.DefaultRequestHeaders.Add("Accept", "application/json");
             }).AddTransientHttpErrorPolicy(builder => builder.WaitAndRetryAsync(new[]
             {
                 TimeSpan.FromSeconds(1),

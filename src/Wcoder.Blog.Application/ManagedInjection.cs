@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using System.Linq;
 using System.Reflection;
+using Wcoder.Blog.Application;
 using Wcoder.Blog.Infrastructure;
 using Wcoder.Blog.Protocol.Interfaces;
 using Wcoder.Blog.Services;
@@ -39,6 +41,12 @@ namespace Microsoft.Extensions.DependencyInjection
         public static void AddBlazorHostServerWcoderBlogServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddWcoderBlogServices(configuration);
+            services.AddMvc().AddServicesMvc();
+        }
+
+        private static IMvcBuilder AddServicesMvc(this IMvcBuilder builder)
+        {
+            return builder.ConfigureApplicationPartManager(m => m.FeatureProviders.Add(new MvcFeatureProvider(builder.Services)));
         }
     }
 }
