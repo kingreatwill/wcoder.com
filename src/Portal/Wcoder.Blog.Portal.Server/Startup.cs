@@ -27,6 +27,7 @@ namespace Wcoder.Blog.Portal.Server
         {
             // wcoder
             services.AddWcoderBlogServices(Configuration);
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -53,6 +54,16 @@ namespace Wcoder.Blog.Portal.Server
             app.UseCookiePolicy();
 
             app.UseMvc();
+
+            app.Map("/test", Test);
+        }
+
+        private static void Test(IApplicationBuilder app)
+        {
+            app.Run(async context =>
+            {
+                await context.Response.WriteAsync("OK");
+            });
         }
     }
 }
