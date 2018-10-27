@@ -23,6 +23,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wcoder.Blog.Infrastructure"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wcoder.Blog.Application", "src\Wcoder.Blog.Application\Wcoder.Blog.Application.csproj", "{5862CC0F-A401-4CE5-AC14-E3525946B328}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wcoder.Blog.Dashboard.Host", "src\Dashboard\Wcoder.Blog.Dashboard.Host\Wcoder.Blog.Dashboard.Host.csproj", "{8081B7DA-18E2-42C0-B203-730E6A7AACBF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,10 @@ Global
 		{5862CC0F-A401-4CE5-AC14-E3525946B328}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5862CC0F-A401-4CE5-AC14-E3525946B328}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5862CC0F-A401-4CE5-AC14-E3525946B328}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8081B7DA-18E2-42C0-B203-730E6A7AACBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8081B7DA-18E2-42C0-B203-730E6A7AACBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8081B7DA-18E2-42C0-B203-730E6A7AACBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8081B7DA-18E2-42C0-B203-730E6A7AACBF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -70,6 +76,7 @@ Global
 		{90D2197D-D45E-4C3D-BA9D-1D0E8CEE3FFE} = {9A49B506-1100-4D19-AFEA-E99ED52C8013}
 		{4EC5EAFD-1CDC-40C0-A279-54426D9ACF5C} = {82D37A72-B05C-4B47-A3C3-A5364A190738}
 		{E9EBB385-99A2-45CE-A874-77D55EE562C3} = {82D37A72-B05C-4B47-A3C3-A5364A190738}
+		{8081B7DA-18E2-42C0-B203-730E6A7AACBF} = {9A49B506-1100-4D19-AFEA-E99ED52C8013}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {769C9A6B-E83F-468F-B810-36D261D9B0D1}
