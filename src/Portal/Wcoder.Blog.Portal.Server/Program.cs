@@ -18,7 +18,7 @@ namespace Wcoder.Blog.Portal.Server
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
+            WebHost.CreateDefaultBuilder(args).UseUrls("http://localhost:5001")
                 .UseStartup<Startup>();
     }
 }
