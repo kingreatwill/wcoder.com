@@ -28,5 +28,15 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddScoped<IWeatherForecastService, WeatherForecastService>();
             services.AddScoped<IWcoderBlogService, WcoderBlogService>();
         }
+
+        /// <summary>
+        /// BlazorHostServer
+        /// </summary>
+        /// <param name="services">IServiceCollection</param>
+        /// <param name="configuration">IConfiguration</param>
+        public static void AddBlazorHostServerWcoderBlogServices(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddWcoderBlogServices(configuration);
+        }
     }
 }

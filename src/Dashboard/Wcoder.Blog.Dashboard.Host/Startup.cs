@@ -26,8 +26,8 @@ namespace Wcoder.Blog.Dashboard.Host
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddMvc();
-            services.AddWcoderBlogServices(Configuration);
+            services.AddMvc();
+            services.AddBlazorHostServerWcoderBlogServices(Configuration);
             services.AddResponseCompression(options =>
             {
                 options.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(new[]
@@ -48,11 +48,11 @@ namespace Wcoder.Blog.Dashboard.Host
                 app.UseDeveloperExceptionPage();
             }
 
-            //app.UseMvc(routes =>
-            //{
-            //    routes.MapRoute(name: "default", template: "{controller}/{action}/{id?}");
-            //});
-
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(name: "default", template: "{controller}/{action}/{id?}");
+            });
+            app.UseBlazorHostServer();
             app.UseBlazor<App.Program>();
         }
     }

@@ -8,6 +8,7 @@ using Wcoder.Blog.Protocol.Models;
 
 namespace Wcoder.Blog.Services
 {
+    [Microsoft.AspNetCore.Mvc.ControllerAttribute]
     public class WeatherForecastService : IWeatherForecastService
     {
         private readonly BlogContext blogContext;
@@ -26,6 +27,7 @@ namespace Wcoder.Blog.Services
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
 
+        [Microsoft.AspNetCore.Mvc.HttpGet("/ff")]
         public Task<WeatherForecast[]> GetForecastAsync(DateTime startDate)
         {
             var rng = new Random();

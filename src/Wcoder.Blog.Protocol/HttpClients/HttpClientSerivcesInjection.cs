@@ -12,7 +12,7 @@ namespace Microsoft.Extensions.DependencyInjection
         /// </summary>
         /// <param name="services">IServiceCollection</param>
         /// <param name="configuration">IConfiguration</param>
-        public static void AddBlazorHostWcoderBlogServices(this IServiceCollection services)
+        public static void AddBlazorHostClientWcoderBlogServices(this IServiceCollection services)
         {
             services.AddHttpClient("GitHub", client =>
             {
