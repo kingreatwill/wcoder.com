@@ -1,5 +1,4 @@
-﻿using Polly;
-using System;
+﻿using System;
 using Wcoder.Blog.Protocol.HttpClients;
 using Wcoder.Blog.Protocol.Interfaces;
 namespace Microsoft.Extensions.DependencyInjection
@@ -12,12 +11,7 @@ namespace Microsoft.Extensions.DependencyInjection
             {
                 client.BaseAddress = new Uri("http://localhost:5003");
                 client.DefaultRequestHeaders.Add("Accept", "application/json");
-            }).AddTransientHttpErrorPolicy(builder => builder.WaitAndRetryAsync(new[]
-            {
-                TimeSpan.FromSeconds(1),
-                TimeSpan.FromSeconds(2),
-                TimeSpan.FromSeconds(3)
-            }));
+            });
 
             // Services
 			services.AddScoped<IWcoderBlogService, WcoderBlogHttpClientService>();
