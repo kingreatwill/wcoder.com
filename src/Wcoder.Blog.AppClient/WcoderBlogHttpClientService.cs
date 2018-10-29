@@ -1,6 +1,6 @@
 using Wcoder.Blog.Protocol.Interfaces;
 
-namespace Wcoder.Blog.Protocol.HttpClients
+namespace Wcoder.Blog.AppClient
 {
     public class WcoderBlogHttpClientService : IWcoderBlogService
     {

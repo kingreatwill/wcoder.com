@@ -4,7 +4,7 @@
 <#@ Assembly Name="System.Xml.dll" #>
 <#@ Assembly Name="System.Xml.Linq.dll" #>
 <#@ Assembly Name="System.Windows.Forms.dll" #>
-<#@ Assembly Name="$(TargetDir)\$(TargetName).dll" #>
+<#@ Assembly Name="$(TargetDir)\Wcoder.Blog.Protocol.dll" #>
 <#@ import namespace="System.Reflection" #>
 <#@ import namespace="System" #>
 <#@ import namespace="System.IO" #>
@@ -28,7 +28,7 @@
 	string solutionsPath = Host.ResolveAssemblyReference(@"$(SolutionDir)"); 
 #>
 using System;
-using Wcoder.Blog.Protocol.HttpClients;
+using Wcoder.Blog.AppClient;
 using Wcoder.Blog.Protocol.Interfaces;
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -36,13 +36,9 @@ namespace Microsoft.Extensions.DependencyInjection
     {
         public static void AddBlazorHostClientWcoderBlogServices(this IServiceCollection services)
         {
-            services.AddHttpClient("WcoderBlog", client =>
-            {
-                client.BaseAddress = new Uri("http://localhost:5003");
-                client.DefaultRequestHeaders.Add("Accept", "application/json");
-            });
-
             // Services
+			services.AddScoped<IWeatherForecastService, WeatherForecastHttpClientService>();
+			services.AddScoped<IWcoderBlogService, WcoderBlogHttpClientService>();
 <#
 foreach (var service in services) {
 #>

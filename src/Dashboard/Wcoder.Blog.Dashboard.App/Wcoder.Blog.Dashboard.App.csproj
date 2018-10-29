@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Wcoder.Blog.AppClient\Wcoder.Blog.AppClient.csproj" />
     <ProjectReference Include="..\..\Wcoder.Blog.Protocol\Wcoder.Blog.Protocol.csproj" />
   </ItemGroup>
 
