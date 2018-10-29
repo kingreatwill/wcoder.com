@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Blazor;
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -10,7 +11,6 @@ namespace Wcoder.Blog.AppClient
     {
         private readonly HttpClient httpClient;
         private readonly string controllerName = "WeatherForecastService";
-        private readonly string clientName = "WcoderBlog";
 
         public WeatherForecastHttpClientService(HttpClient httpClient)
         {
@@ -20,11 +20,7 @@ namespace Wcoder.Blog.AppClient
         public async Task<WeatherForecast[]> GetForecastAsync(DateTime startDate)
         {
             var url = $"/{controllerName}/{nameof(GetForecastAsync)}";
-            var response = await httpClient.GetAsync(url);
-            using (var stream = await response.Content.ReadAsStreamAsync())
-            {
-                return await ServiceStack.Text.JsonSerializer.DeserializeFromStreamAsync<WeatherForecast[]>(stream);
-            }
+            return await httpClient.GetJsonAsync<WeatherForecast[]>(url);
         }
     }
 }
