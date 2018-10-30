@@ -1,5 +1,6 @@
 ﻿@page "/fetchdata"
 @inject IWeatherForecastService ForecastService
+@inject IWcoderBlogService BlogService
 
 <h1>Weather forecast</h1>
 
@@ -30,15 +31,25 @@ else
                     <td>@forecast.Summary</td>
                 </tr>
             }
+            @foreach (var article in articles)
+            {
+                <tr>
+                    <td>@article.Id</td>
+                    <td>@article.Title</td>
+                    <td>@article.CatalogId</td>
+                    <td>@article.Content</td>
+                </tr>
+            }
         </tbody>
     </table>
 }
 
 @functions {
 WeatherForecast[] forecasts;
-
+Article[] articles;
 protected override async Task OnInitAsync()
 {
     forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
+    articles = await BlogService.ArticleListAsync();
 }
 }

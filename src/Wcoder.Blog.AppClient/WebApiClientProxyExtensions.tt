@@ -1,4 +1,4 @@
-﻿<#@ template debug="true" hostSpecific="true" #>
+﻿<#@ template debug="true" hostSpecific="true" language="C#" #>
 <#@ output extension=".cs" #>
 <#@ Assembly Name="System.Core.dll" #>
 <#@ Assembly Name="netstandard.dll" #>
@@ -6,7 +6,7 @@
 <#@ Assembly Name="System.Xml.dll" #>
 <#@ Assembly Name="System.Xml.Linq.dll" #>
 <#@ Assembly Name="System.Windows.Forms.dll" #>
-<#@ Assembly Name="$(TargetDir)\Wcoder.Blog.Protocol.dll" #>
+<#@ Assembly Name="$(SolutionDir)\src\Wcoder.Blog.Protocol\bin\Debug\netstandard2.0\Wcoder.Blog.Protocol.dll" #>
 <#@ import namespace="System.Reflection" #>
 <#@ import namespace="System" #>
 <#@ import namespace="System.IO" #>
@@ -115,7 +115,7 @@ public class HttpClientProxy
 ";
                 msb.Append(ms);
             }
-
+		
             StringBuilder sb = new StringBuilder();
             sb.Append(@"using Microsoft.AspNetCore.Blazor;
 using System;
