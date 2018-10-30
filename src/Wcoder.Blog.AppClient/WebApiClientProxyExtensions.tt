@@ -1,31 +1,36 @@
 ﻿<#@ template debug="true" hostSpecific="true" #>
 <#@ output extension=".cs" #>
 <#@ Assembly Name="System.Core.dll" #>
+<#@ Assembly Name="netstandard.dll" #>
+<#@ Assembly Name="System.Net.Http.dll" #>
 <#@ Assembly Name="System.Xml.dll" #>
 <#@ Assembly Name="System.Xml.Linq.dll" #>
 <#@ Assembly Name="System.Windows.Forms.dll" #>
 <#@ Assembly Name="$(TargetDir)\Wcoder.Blog.Protocol.dll" #>
+<#@ Assembly Name="$(TargetDir)\Wcoder.Blog.AppClient.dll" #>
 <#@ import namespace="System.Reflection" #>
 <#@ import namespace="System" #>
 <#@ import namespace="System.IO" #>
 <#@ import namespace="System.Diagnostics" #>
 <#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Net.Http" #>
 <#@ import namespace="System.Xml.Linq" #>
 <#@ import namespace="System.Collections" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="Wcoder.Blog.Protocol.Interfaces" #>
+<#@ import namespace="Wcoder.Blog.AppClient" #>
+
 <#@ output extension=".cs" #>
 <# 
-	var types = Assembly.GetAssembly(typeof(IWcoderBlogService)).GetTypes().Where(t =>t.IsClass && t.Name.EndsWith("Service")).ToArray();
-	var services = new List<TwoTypes>();
+	var types = Assembly.GetAssembly(typeof(IWcoderBlogService)).GetTypes().Where(t =>t.IsInterface && t.Name.EndsWith("Service")).ToArray();
+	var services = new List<Type>();
 	foreach (var t in types)
 	{
-        services.Add(new TwoTypes{
-			InterfaceType=t.GetInterfaces().FirstOrDefault(),
-			ClassType=t
-		});//t.GetInterfaces().FirstOrDefault()
+		//MethodInfo[] info = t.GetMethods();//ParameterInfo[] paramInfos = md.GetParameters();
+        services.Add(t);//t.GetInterfaces().FirstOrDefault()
     }
-	string solutionsPath = Host.ResolveAssemblyReference(@"$(SolutionDir)"); 
+	string solutionsPath = Host.ResolveAssemblyReference(@"$(ProjectDir)"); 
 #>
 using System;
 using Wcoder.Blog.AppClient;
@@ -36,13 +41,12 @@ namespace Microsoft.Extensions.DependencyInjection
     {
         public static void AddBlazorHostClientWcoderBlogServices(this IServiceCollection services)
         {
-            // Services
-			services.AddScoped<IWeatherForecastService, WeatherForecastHttpClientService>();
-			services.AddScoped<IWcoderBlogService, WcoderBlogHttpClientService>();
+            // Services			
 <#
 foreach (var service in services) {
+	new HttpClientProxy().MkFile(solutionsPath+"\\HttpClient"+service.Name.TrimStart('I')+".cs",new HttpClientProxy().Generate(service));
 #>
-			services.AddScoped<<#= service.InterfaceType.Name#>, <#= service.ClassType.Name#>>();
+			services.AddScoped<<#= service.Name#>, <#= "HttpClient"+service.Name.TrimStart('I')#>>();
 <#
 }
 #>
@@ -52,9 +56,6 @@ foreach (var service in services) {
 
 
 <#+ 
-public class TwoTypes
-    {
-		public Type InterfaceType {get;set;}
-		public Type ClassType {get;set;}
-	}
+
+
 #>

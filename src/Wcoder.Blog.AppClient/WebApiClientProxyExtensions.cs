@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using Wcoder.Blog.AppClient;
 using Wcoder.Blog.Protocol.Interfaces;
 namespace Microsoft.Extensions.DependencyInjection
@@ -7,9 +8,9 @@ namespace Microsoft.Extensions.DependencyInjection
     {
         public static void AddBlazorHostClientWcoderBlogServices(this IServiceCollection services)
         {
-            // Services
-			services.AddScoped<IWeatherForecastService, WeatherForecastHttpClientService>();
-			services.AddScoped<IWcoderBlogService, WcoderBlogHttpClientService>();
+            // Services			
+			services.AddScoped<IWcoderBlogService, HttpClientWcoderBlogService>();
+			services.AddScoped<IWeatherForecastService, HttpClientWeatherForecastService>();
         }
     }
 }
