@@ -15,6 +15,8 @@ namespace Wcoder.Blog.Infrastructure
 
         public DbSet<Catalog> Catalogs { get; set; }
 
+        public DbSet<Collect> Collects { get; set; }
+
         public DbSet<Article> Articles { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)

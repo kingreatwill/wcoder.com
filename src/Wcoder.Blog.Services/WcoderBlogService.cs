@@ -3,6 +3,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Wcoder.Blog.Infrastructure;
+using Wcoder.Blog.Protocol.Extensions;
 using Wcoder.Blog.Protocol.Interfaces;
 using Wcoder.Blog.Protocol.Models;
 
@@ -20,7 +21,7 @@ namespace Wcoder.Blog.Services
         public async Task<long> AddArticleAsync(Article article)
         {
             var aRepo = unitOfWork.GetRepository<Article>();
-            article.Id = new Guid().GetHashCode();
+            article.Id = GlobalExtensions.NewLongId();
             await aRepo.InsertAsync(article);
             await unitOfWork.SaveChangesAsync();
             return article.Id;

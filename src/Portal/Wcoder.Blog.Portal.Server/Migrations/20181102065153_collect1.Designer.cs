@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Wcoder.Blog.Infrastructure;
 
 namespace Wcoder.Blog.Portal.Server.Migrations
 {
     [DbContext(typeof(BlogContext))]
-    partial class BlogContextModelSnapshot : ModelSnapshot
+    [Migration("20181102065153_collect1")]
+    partial class collect1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -98,47 +100,6 @@ namespace Wcoder.Blog.Portal.Server.Migrations
                     b.ToTable("Catalogs");
                 });
 
-            modelBuilder.Entity("Wcoder.Blog.Protocol.Models.Collect", b =>
-                {
-                    b.Property<long>("Id");
-
-                    b.Property<DateTime>("Created")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<long>("CreatedBy");
-
-                    b.Property<bool>("Deleted");
-
-                    b.Property<long>("DeletedBy");
-
-                    b.Property<string>("Description")
-                        .HasMaxLength(500);
-
-                    b.Property<int>("Importance");
-
-                    b.Property<string>("Tags")
-                        .HasMaxLength(500);
-
-                    b.Property<long>("TenantId");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasMaxLength(50);
-
-                    b.Property<DateTime>("Updated")
-                        .ValueGeneratedOnAddOrUpdate();
-
-                    b.Property<long>("UpdatedBy");
-
-                    b.Property<string>("Uri")
-                        .IsRequired()
-                        .HasMaxLength(50);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Collects");
-                });
-
             modelBuilder.Entity("Wcoder.Blog.Protocol.Models.Tenant", b =>
                 {
                     b.Property<long>("Id");
@@ -175,7 +136,7 @@ namespace Wcoder.Blog.Portal.Server.Migrations
                     b.ToTable("Tenant");
 
                     b.HasData(
-                        new { Id = 1L, Created = new DateTime(2018, 11, 2, 6, 54, 25, 680, DateTimeKind.Utc), CreatedBy = 0L, Deleted = false, DeletedBy = 0L, LogoId = "", LogoUri = "", Name = "wcoder.com", Updated = new DateTime(2018, 11, 2, 6, 54, 25, 680, DateTimeKind.Utc), UpdatedBy = 0L }
+                        new { Id = 1L, Created = new DateTime(2018, 11, 2, 6, 51, 53, 735, DateTimeKind.Utc), CreatedBy = 0L, Deleted = false, DeletedBy = 0L, LogoId = "", LogoUri = "", Name = "wcoder.com", Updated = new DateTime(2018, 11, 2, 6, 51, 53, 735, DateTimeKind.Utc), UpdatedBy = 0L }
                     );
                 });
 

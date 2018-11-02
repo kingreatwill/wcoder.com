@@ -10,6 +10,7 @@ namespace Microsoft.Extensions.DependencyInjection
         {
             // Services			
 			services.AddScoped<IWcoderBlogService, HttpClientWcoderBlogService>();
+			services.AddScoped<IWcoderCollectService, HttpClientWcoderCollectService>();
 			services.AddScoped<IWeatherForecastService, HttpClientWeatherForecastService>();
         }
     }

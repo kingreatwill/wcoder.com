@@ -13,6 +13,13 @@ using Wcoder.Blog.Services;
 
 namespace Wcoder.Blog.Portal.Server
 {
+    //dotnet ef migrations add xxx
+    //dotnet ef database update
+
+    //Enable-Migrations
+    //Remove-Migration
+    //Add-Migration xxx
+    //Update-Databse
     public class Startup
     {
         public Startup(IConfiguration configuration)
