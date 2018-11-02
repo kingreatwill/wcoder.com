@@ -15,10 +15,11 @@ namespace Wcoder.Blog.Services
 
         public WcoderCollectService(IUnitOfWork unitOfWork)//(BlogContext blogContext, IRepository<Tenant> repository, IUnitOfWork unitOfWork)
         {
+            //Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContext
             this.unitOfWork = unitOfWork;
         }
 
-        public async Task<long> AddAsync(Collect collect)
+        public async Task<long> AddAsync([Microsoft.AspNetCore.Mvc.FromBody]Collect collect)
         {
             var aRepo = unitOfWork.GetRepository<Collect>();
             collect.Id = GlobalExtensions.NewLongId();

@@ -1,6 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc.Controllers;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Controllers;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using System;
 using System.Linq;
 using System.Reflection;
 using Wcoder.Blog.Application;
@@ -12,6 +17,8 @@ namespace Microsoft.Extensions.DependencyInjection
 {
     public static class ManagedInjection
     {
+        #region Services
+
         /// <summary>
         /// WcoderBlog
         /// </summary>
@@ -28,8 +35,42 @@ namespace Microsoft.Extensions.DependencyInjection
                                            //https://github.com/Arch/UnitOfWork
             services.AddScoped(typeof(DbContext), typeof(BlogContext));
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+
+            // services.AddHttpContextAccessor();
+            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            //services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
+
             // Services
             services.AddWcoderBlogServices();
+
+            #region Session
+
+            // Uncomment the following line to use the in-memory implementation of IDistributedCache
+            services.AddDistributedMemoryCache();
+
+            // Uncomment the following line to use the Microsoft SQL Server implementation of IDistributedCache.
+            // Note that this would require setting up the session state database.
+            //services.AddDistributedSqlServerCache(o =>
+            //{
+            //    o.ConnectionString = Configuration["AppSettings:ConnectionString"];
+            //    o.SchemaName = "dbo";
+            //    o.TableName = "Sessions";
+            //});
+
+            // Uncomment the following line to use the Redis implementation of IDistributedCache.
+            // This will override any previously registered IDistributedCache service.
+            //services.AddDistributedRedisCache(o =>
+            //{
+            //    o.Configuration = "localhost";
+            //    o.InstanceName = "SampleInstance";
+            //});
+
+            services.AddSession(o =>
+            {
+                o.IdleTimeout = TimeSpan.FromSeconds(10);
+            });
+
+            #endregion Session
         }
 
         /// <summary>
@@ -47,5 +88,16 @@ namespace Microsoft.Extensions.DependencyInjection
         {
             return builder.ConfigureApplicationPartManager(m => m.FeatureProviders.Add(new MvcFeatureProvider(builder.Services)));
         }
+
+        #endregion Services
+
+        #region App
+
+        public static IApplicationBuilder UseWcoderBlogServices(this IApplicationBuilder app)
+        {
+            return app.UseSession();
+        }
+
+        #endregion App
     }
 }

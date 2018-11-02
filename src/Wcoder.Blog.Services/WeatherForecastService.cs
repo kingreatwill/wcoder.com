@@ -27,7 +27,6 @@ namespace Wcoder.Blog.Services
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
 
-        // [Microsoft.AspNetCore.Mvc.HttpGet()]
         public Task<WeatherForecast[]> GetForecastAsync(DateTime startDate)
         {
             var rng = new Random();
