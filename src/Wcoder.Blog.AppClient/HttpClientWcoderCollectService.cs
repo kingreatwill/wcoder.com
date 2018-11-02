@@ -21,7 +21,7 @@ namespace Wcoder.Blog.AppClient
         public async Task<Int64> AddAsync(Collect collect)
         {
             var url = $"/{controllerName}/{nameof(AddAsync)}";
-            return await httpClient.PostJsonAsync<Int64>(url,null);
+            return await httpClient.PostJsonAsync<Int64>(url,collect);
         }
 
         public async Task<Collect[]> ListAsync()

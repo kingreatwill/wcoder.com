@@ -1,0 +1,41 @@
+﻿@page "/collect"
+@inject IWcoderCollectService BlogService
+<h1>Todo (@Collects.Count())</h1>
+
+<ul>
+    @foreach (var item in Collects)
+    {
+        <li>
+            @item.Title
+        </li>
+    }
+</ul>
+<input placeholder="Uri" bind="@collect.Uri" />
+<input placeholder="Title" bind="@collect.Title" />
+<input placeholder="Tags" bind="@collect.Tags" />
+<input placeholder="Description" bind="@collect.Description" />
+<button onclick="@AddCollect">Add todo</button>
+
+@functions {
+
+IList<Collect> Collects = new List<Collect>();
+
+Collect collect = new Collect();
+
+async void AddCollect()
+{
+    if (string.IsNullOrWhiteSpace(collect.Title) || string.IsNullOrWhiteSpace(collect.Uri))
+    {
+        return;
+    }
+    var id = await BlogService.AddAsync(collect);
+    if (id > 0)
+        Collects.Add(collect);
+    collect = new Collect();
+}
+
+protected override async Task OnInitAsync()
+{
+    Collects = await BlogService.ListAsync();
+}
+}

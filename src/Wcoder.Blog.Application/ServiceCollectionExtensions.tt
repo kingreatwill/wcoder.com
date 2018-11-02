@@ -1,0 +1,53 @@
+﻿<#@ template debug="true" hostSpecific="true" language="C#" #>
+<#@ output extension=".cs" #>
+<#@ Assembly Name="System.Core.dll" #>
+<#@ Assembly Name="netstandard.dll" #>
+<#@ Assembly Name="System.Net.Http.dll" #>
+<#@ Assembly Name="System.Xml.dll" #>
+<#@ Assembly Name="System.Xml.Linq.dll" #>
+<#@ Assembly Name="System.Windows.Forms.dll" #>
+<#@ Assembly Name="$(SolutionDir)\src\Wcoder.Blog.Protocol\bin\Debug\netstandard2.0\Wcoder.Blog.Protocol.dll" #>
+<#@ import namespace="System.Reflection" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Net.Http" #>
+<#@ import namespace="System.Xml.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Threading.Tasks" #>
+<#@ import namespace="Wcoder.Blog.Protocol.Interfaces" #>
+<#@ output extension=".cs" #>
+<# 
+	var types = Assembly.GetAssembly(typeof(IWcoderBlogService)).GetTypes().Where(t =>t.IsInterface && t.Name.EndsWith("Service")).ToArray();
+	var services = new List<Type>();
+	foreach (var t in types)
+	{
+		//MethodInfo[] info = t.GetMethods();//ParameterInfo[] paramInfos = md.GetParameters();
+        services.Add(t);//t.GetInterfaces().FirstOrDefault()
+    }
+	string solutionsPath = Host.ResolveAssemblyReference(@"$(ProjectDir)"); 
+#>
+using System;
+using Wcoder.Blog.Services;
+using Wcoder.Blog.Protocol.Interfaces;
+namespace Microsoft.Extensions.DependencyInjection
+{
+    public static class ServiceCollectionExtensions
+    {
+        public static void AddWcoderBlogServices(this IServiceCollection services)
+        {
+            // Services			
+<#
+foreach (var service in services) {
+
+#>
+			services.AddScoped<<#= service.Name#>, <#= service.Name.TrimStart('I')#>>();
+<#
+}
+#>
+        }
+    }
+}

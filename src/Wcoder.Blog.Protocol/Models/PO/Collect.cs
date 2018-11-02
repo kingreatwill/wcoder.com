@@ -26,7 +26,7 @@ namespace Wcoder.Blog.Protocol.Models
         [MaxLength(500)]
         public string Description { get; set; }
 
-        public ushort Importance { get; set; }
+        public int Importance { get; set; }
 
         public long TenantId { get; set; }
 

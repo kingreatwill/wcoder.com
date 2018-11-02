@@ -29,8 +29,7 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddScoped(typeof(DbContext), typeof(BlogContext));
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             // Services
-            services.AddScoped<IWeatherForecastService, WeatherForecastService>();
-            services.AddScoped<IWcoderBlogService, WcoderBlogService>();
+            services.AddWcoderBlogServices();
         }
 
         /// <summary>

@@ -60,7 +60,7 @@ namespace Wcoder.Blog.AppClient
         public async Task{returnTypeName} {method.Name}({string.Join(",", mParameters)})
         {{
             var url = $""/{{controllerName}}/{{nameof({method.Name})}}"";
-            return await httpClient.{(httpMethod == HttpMethod.Get ? "GetJsonAsync" : "PostJsonAsync")}{returnTypeName}(url{(httpMethod == HttpMethod.Get ? "" : ",null")});
+            return await httpClient.{(httpMethod == HttpMethod.Get ? "GetJsonAsync" : "PostJsonAsync")}{returnTypeName}(url{(httpMethod == HttpMethod.Get ? "" : $",{(mParameters.Count() > 0 ? method.GetParameters().First().Name : "null")}")});
         }}
 ";
                 msb.Append(ms);

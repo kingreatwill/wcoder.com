@@ -22,14 +22,19 @@
                 <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
             </NavLink>
         </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="collect">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Collect
+            </NavLink>
+        </li>
     </ul>
 </div>
 
 @functions {
-    bool collapseNavMenu = true;
+bool collapseNavMenu = true;
 
-    void ToggleNavMenu()
-    {
-        collapseNavMenu = !collapseNavMenu;
-    }
+void ToggleNavMenu()
+{
+    collapseNavMenu = !collapseNavMenu;
+}
 }

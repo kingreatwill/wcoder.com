@@ -21,7 +21,7 @@ namespace Wcoder.Blog.AppClient
         public async Task<Int64> AddArticleAsync(Article article)
         {
             var url = $"/{controllerName}/{nameof(AddArticleAsync)}";
-            return await httpClient.PostJsonAsync<Int64>(url,null);
+            return await httpClient.PostJsonAsync<Int64>(url,article);
         }
 
         public async Task<Article[]> ArticleListAsync()
