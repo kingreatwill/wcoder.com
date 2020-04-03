@@ -1,0 +1,28 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .container {
+    height: 100%;
+    width: 100%;
+  }
+
+  .left-container {
+    overflow: hidden;
+    position: relative;
+    height: 100vh;
+    display: inline-block;
+    width: 82vw;
+  }
+
+  .right-container {
+    border-right: 1px solid #cecece;
+    float: right;
+    height: 100%;
+    width: 340px;
+    box-shadow: 0 0 5px 2px #aaa;
+    position: relative;
+    z-index:2;
+  }
