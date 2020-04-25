@@ -6,3 +6,5 @@ teambition/worktile
 https://github.com/wpcfan/taskmgr
 Vue实现高仿teambition产品
 https://github.com/godtoy/vue-scrum-task-client
+
+semantic-ui-vue
